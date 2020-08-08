@@ -7,6 +7,7 @@ public class Bullet : MonoBehaviour
     {
         var hit = collision.gameObject;
         var health = hit.GetComponent<Health>();
+
         if (health != null)
         {
             health.TakeDamage(10);

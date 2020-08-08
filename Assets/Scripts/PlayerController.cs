@@ -3,7 +3,6 @@ using UnityEngine.Networking;
 
 public class PlayerController : NetworkBehaviour
 {
-
     public GameObject bulletPrefab;
     public Transform bulletSpawn;
 

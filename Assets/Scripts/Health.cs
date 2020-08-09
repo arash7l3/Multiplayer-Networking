@@ -24,13 +24,25 @@ public class Health : NetworkBehaviour
 
         if (currentHealth <= 0)
         {
-            currentHealth = 0;
-            Debug.Log("Dead!");
+            currentHealth = MAXHEALTH;
+
+            // called on the Server, but invoked on the Clients
+            RpcRespwn();
         }
     }
 
     private void OnChangeHealth(int currentHealth)
     {
         healthBar.sizeDelta = new Vector2(currentHealth, healthBar.sizeDelta.y);
+    }
+
+    [ClientRpc]
+    private void RpcRespwn()
+    {
+        if (isLocalPlayer)
+        {
+            // move back to zero location
+            transform.position = Vector3.zero;
+        }
     }
 }

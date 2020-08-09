@@ -337,6 +337,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentHealth: 100
   healthBar: {fileID: 2891635572660993274}
+  destroyOnDeath: 1
 --- !u!1 &2891635572660993237
 GameObject:
   m_ObjectHideFlags: 0

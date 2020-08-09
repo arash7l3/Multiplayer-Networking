@@ -11,6 +11,7 @@ public class Health : NetworkBehaviour
     public int currentHealth = MAXHEALTH;
 
     public RectTransform healthBar;
+    public bool destroyOnDeath;
 
     public void TakeDamage(int amount)
     {
@@ -24,10 +25,17 @@ public class Health : NetworkBehaviour
 
         if (currentHealth <= 0)
         {
-            currentHealth = MAXHEALTH;
+            if (destroyOnDeath)
+            {
+                Destroy(gameObject);
+            }
+            else
+            {
+                currentHealth = MAXHEALTH;
 
-            // called on the Server, but invoked on the Clients
-            RpcRespwn();
+                // called on the Server, but invoked on the Clients
+                RpcRespwn();
+            }
         }
     }
 
